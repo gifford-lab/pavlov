@@ -12,3 +12,5 @@ while true; do
     lastcount=$count
     sleep 10s
 done
+
+sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'

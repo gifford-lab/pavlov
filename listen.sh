@@ -8,9 +8,11 @@ while true; do
     if [ $count -ne $lastcount ]; then
 	echo "new! now at "$count
 	mplayer bell-ringing-04.mp3
+	wget -qq -O - "http://lists.csail.mit.edu/pipermail/vultures/${year}/date.html" | grep HREF | tail -1 | cut -f 2 -d "]" | sed 's/&.*\;//g' | xargs -I {} espeak -v en-us -s 140 -p 50 {}
+    else
+	sleep 5s
     fi
     lastcount=$count
-    sleep 10s
 done
 
-sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g'
+
